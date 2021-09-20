@@ -4,7 +4,28 @@
 
 * **Ahmad Imam Fauzan** - *1906353542* - *APAP-C*
 
+## Tutorial 2
+1. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10 Apa yang terjadi? Jelaskan mengapa hal tersebut dapat terjadi?
+- Karena pada langkah ini, kita belum mempunyai template. Controller dari addBioskop mereturn "add-bioskop" yang mencari html dengan nama tersebut. Karena pada langkah ini kita belum membuat file html, maka akan menampilkan sebuah error, yaitu whitelable page error.
+
+2. Menurut kamu anotasi @Autowired pada class Controller tersebut merupakan implementasi dari konsep apa? Dan jelaskan secara singkat cara kerja @Autowired tersebut dalam konteks service dan controller yang telah kamu buat
+- Autowired merupakan implementasi dari dependency injection. Cara kerjanya yaitu dependency interface-nya diinject automatis via autowired ke service yang mengimplementasi autowired ini.
+
+3. Cobalah untuk menambahkan sebuah Bioskop dengan mengakses link berikut: http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20PAPA%20APAP&alamat=Maung%20Fasilkom&noTelepon=081xxx Apa yang terjadi? Jelaskan
+mengapa hal tersebut dapat terjadi.
+- Link tersebut kurang atribut jumlahStudio karena pada Controller atribut tersebut required-nya bernilai true sehingga harus ada nilai dari atribut tersebut.
+
+4.  Jika Papa APAP ingin melihat Bioskop dengan nama Bioskop Maung, link apa yang harus diakses?
+- Untuk melihat bioskop dengan nama Bioskop Maung sebelumnya kita harus mengadd Bioskop tersebut dengan link http://localhost:8080/bioskop/add?idBioskop=1&namaBioskop=Bioskop%20Maung&alamat=Maung%20Fasilkom&noTelepon=081xxx&jumlahStudio=10
+- Karena pada Controller detail bioskop membutuhkan/merequire sebuah idBioskop, kita perlu tahu id dari bioskop dengan nama Bioskop Maung. Kita dapat melihatnya dari http://localhost:8080/bioskop/viewall
+- Setelah kita tahu id dari bioskop dengan nama Bioskop Maung, kita dapat melihat detail tersebut dengan link http://localhost:8080/bioskop/view?idBioskop=1
+
+5. Tambahkan 1 contoh Bioskop lainnya sesukamu. Lalu cobalah untuk mengakses http://localhost:8080/bioskop/viewall, apa yang akan ditampilkan? Sertakan juga bukti screenshotmu.
+- Link tersebut akan menampilkan semua list bioskop yang sudah di-add
+- Link screenshot: https://bit.ly/ScreenshotNo5AhmadImamFauzan
+
 ---
+
 ## Tutorial 1
 ### What I have learned today
 (Masukkan pertanyaan yang diikuti jawaban di setiap nomor, contoh seperti dibawah. Anda

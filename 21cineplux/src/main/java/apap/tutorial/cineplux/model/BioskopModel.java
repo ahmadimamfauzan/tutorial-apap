@@ -8,6 +8,7 @@ public class BioskopModel {
     private String alamat;
     private String noTelepon;
     private int jumlahStudio;
+    private int jumlahKursi;
 
     public BioskopModel(String idBioskop, String namaBioskop, String alamat, String noTelepon, int jumlahStudio) {
         this.idBioskop = idBioskop;
@@ -56,6 +57,10 @@ public class BioskopModel {
     public void setJumlahStudio(int jumlahStudio) {
         this.jumlahStudio = jumlahStudio;
     }
+
+    public int getJumlahKursi() { return jumlahKursi; }
+
+    public void setJumlahKursi(int jumlahKursi) { this.jumlahKursi = jumlahKursi; }
 
     @Override
     public boolean equals(Object o) {

@@ -41,6 +41,25 @@ public class BioskopController {
         return "add-bioskop";
     }
 
+    @RequestMapping("/bioskop/add2")
+    public String addJumlahKursi(
+            //Request parameter yang ingin digunakan
+            @RequestParam(value = "idBioskop", required = true) String idBioskop,
+            @RequestParam(value = "namaBioskop", required = true) String namaBioskop,
+            @RequestParam(value = "alamat", required = true) String alamat,
+            @RequestParam(value = "noTelepon", required = true) String noTelepon,
+            @RequestParam(value = "jumlahStudio", required = true) int jumlahStudio,
+            @RequestParam(value = "jumlahKursi", required = true) int jumlahKursi,
+            Model model
+    ) {
+        bioskopService.addJumlahKursi(idBioskop, jumlahKursi);
+
+        model.addAttribute("idBioskop", idBioskop);
+        model.addAttribute("jumlahKursi", jumlahKursi);
+
+        return "add-jumlah-kursi";
+    }
+
     @RequestMapping("/bioskop/viewall")
     public String listBioskop(Model model) {
         //Mendapatkan semua bioskop
@@ -102,6 +121,4 @@ public class BioskopController {
             return "delete-error";
         }
     }
-
-
 }

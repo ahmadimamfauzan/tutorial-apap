@@ -19,4 +19,7 @@ public interface BioskopService {
 
     //Method untuk mendelete bioskop
     boolean deleteBioskop(String idBioskop);
+
+    //Method untuk menambahkan atribut Jumlah kursi bioskop
+    void addJumlahKursi(String idBioskop, int jumlahKursi);
 }

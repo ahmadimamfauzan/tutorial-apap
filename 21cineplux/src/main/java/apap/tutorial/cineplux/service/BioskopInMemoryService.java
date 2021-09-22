@@ -54,4 +54,10 @@ public class BioskopInMemoryService implements BioskopService {
             return false;
         }
     }
+
+    @Override
+    public void addJumlahKursi(String idBioskop, int jumlahKursi) {
+        BioskopModel bioskopTarget = getBioskopByIdBioskop(idBioskop);
+        bioskopTarget.setJumlahKursi(jumlahKursi);
+    }
 }

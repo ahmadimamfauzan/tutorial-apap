@@ -79,9 +79,29 @@ public class BioskopController {
             @ModelAttribute BioskopModel bioskop,
             Model model
     ) {
-        bioskopService.updateBioskop(bioskop);
-        model.addAttribute("noBioskop", bioskop.getNoBioskop());
-        return "update-bioskop";
+        String newName = bioskop.getNamaBioskop();
+
+        List<BioskopModel> listBioskop = bioskopService.getBioskopList();
+
+        boolean ada = false;
+        for(BioskopModel bio : listBioskop) {
+            if(bio.getNamaBioskop().equals(newName)) {
+                ada = true;
+                break;
+            }
+        }
+
+        if(ada == true) {
+            model.addAttribute("noBioskop", bioskop.getNoBioskop());
+            model.addAttribute("newName", newName);
+            return "error-bioskop-update";
+        } else {
+            bioskopService.updateBioskop(bioskop);
+            model.addAttribute("noBioskop", bioskop.getNoBioskop());
+            return "update-bioskop";
+        }
+
+
     }
 
     @GetMapping("/bioskop/delete/{noBioskop}")

@@ -101,15 +101,32 @@ public class PenjagaController {
         }
     }
 
+//    @PostMapping("/penjaga/delete")
+//    public String deletePenjagaSubmit(
+//            @ModelAttribute PenjagaModel penjaga,
+//            Model model
+//    ) {
+//        model.addAttribute("noPenjaga", penjaga.getNoPenjaga());
+//        model.addAttribute("noBioskop", penjaga.getBioskop().getNoBioskop());
+//        penjagaService.deletePenjaga(penjaga);
+//
+//        return "delete-penjaga";
+//    }
+
     @PostMapping("/penjaga/delete")
-    public String deletePenjagaSubmit(
-            @ModelAttribute PenjagaModel penjaga,
+    public String deletePenjagaSubmit2(
+            @ModelAttribute BioskopModel bioskop,
             Model model
     ) {
-        model.addAttribute("noPenjaga", penjaga.getNoPenjaga());
-        model.addAttribute("noBioskop", penjaga.getBioskop().getNoBioskop());
-        penjagaService.deletePenjaga(penjaga);
-
-        return "delete-penjaga";
+        model.addAttribute("noBioskop", bioskop.getNoBioskop());
+        int res = 1;
+        for(PenjagaModel penjaga : bioskop.getListPenjaga()) {
+            res = penjagaService.deletePenjaga(penjaga);
+        }
+        if(res == 1) {
+            return "delete-penjaga";
+        }
+        model.addAttribute("errorName", "Tidak bisa men-delete penjaga!");
+        return "error-bioskop-buka";
     }
 }

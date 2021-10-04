@@ -4,6 +4,19 @@
 
 * **Ahmad Imam Fauzan** - *1906353542* - *APAP-C*
 
+## Tutorial 4
+1. Jelaskan perbedaan th:include dan th:replace!
+    - th:include
+        - akan menyertakan konten fragmen ke dalam tag hostnya.
+    - th:replace
+        - akan menggantikan tag host dengan fragmen. Hal ini akan menghapus tag host dan sebagai gantinya akan menambahkan tag dari fragmen.
+2. Jelaskan apa fungsi dari th:object!
+    - Pada tag form method yang digunakan pada form-update-penjaga adalah post sesuai yang terdapat di controller. th:object="${penjaga} adalah salah satu penerapan tag thymeleaf untuk menampung objek penjaga, objek penjaga berasal dari controller.
+3. Jelaskan perbedaan dari * dan $ pada saat penggunaan th:object! Kapan harus dipakai?
+    - Tanda bintang * digunakan saat objek yang diberikan merupakan sebuah list dan biasanya digunakan untuk mengolah isi list tersebut (contohnya: for loop) sedangkan $ digunakan pada data yang tipenya tunggal.
+
+---
+
 ## Tutorial 3
 1. Tolong jelaskan secara singkat apa kegunaan dari anotasi-anotasi yang ada pada model (@AllArgsConstructor, @NoArgsConstructor, @Setter, @Getter, @Entity, @Table)
     - @AllArgsConstructor: menghasilkan constructor dengan 1 parameter untuk setiap field di class kita 

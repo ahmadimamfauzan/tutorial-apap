@@ -1,10 +1,12 @@
 package apap.tutorial.cineplux.controller;
 
 import apap.tutorial.cineplux.model.BioskopModel;
+import apap.tutorial.cineplux.model.FilmModel;
 import apap.tutorial.cineplux.model.PenjagaModel;
 import apap.tutorial.cineplux.repository.BioskopDB;
 import apap.tutorial.cineplux.service.BioskopService;
 import apap.tutorial.cineplux.service.PenjagaService;
+import apap.tutorial.cineplux.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -21,9 +23,14 @@ public class BioskopController {
     @Autowired
     private BioskopService bioskopService;
 
+    @Qualifier("filmServiceImpl")
+    @Autowired
+    private FilmService filmService;
+
     @GetMapping("/bioskop/add")
     public String addBioskopForm(Model model) {
         model.addAttribute("bioskop", new BioskopModel());
+        model.addAttribute("listFilm", filmService.getListFilm());
         return "form-add-bioskop";
     }
 
@@ -32,6 +39,8 @@ public class BioskopController {
             @ModelAttribute BioskopModel bioskop,
             Model model
     ) {
+        List<FilmModel> listFilm = filmService.getListFilm();
+
         bioskopService.addBioskop(bioskop);
         model.addAttribute("noBioskop", bioskop.getNoBioskop());
         return "add-bioskop";
@@ -55,6 +64,7 @@ public class BioskopController {
             List<PenjagaModel> listPenjaga = bioskop.getListPenjaga();
             model.addAttribute("bioskop", bioskop);
             model.addAttribute("listPenjaga", listPenjaga);
+            model.addAttribute("listFilm", bioskop.getListFilm());
             return "view-bioskop";
         } else {
             model.addAttribute("noBioskop", noBioskop);

@@ -52,4 +52,11 @@
 </nav>
 </body>
 
+<footer th:fragment="footer" class="page-footer font-small blue">
+    <div class="footer-copyright text-center py-3">
+        <h3 th:text="${waktuAkses}"></h3>
+        <h3 th:text="${#dates.format(#dates.createNow(), 'EEE, d MMMM yyyy HH:mm')}"></h3>
+    </div>
+</footer>
+
 </html>

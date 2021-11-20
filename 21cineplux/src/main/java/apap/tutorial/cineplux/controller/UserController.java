@@ -38,9 +38,31 @@ public class UserController {
 
     @PostMapping(value = "/add")
     private String addUserSubmit(@ModelAttribute UserModel user, Model model) {
-        userService.addUser(user);
-        model.addAttribute("user", user);
-        return "redirect:/";
+
+
+        String email = user.getEmail(); // Email user baru dari form
+
+        List<UserModel> usersList = userService.getUserList();
+        boolean adaEmailSama = false;
+        for(UserModel userDariList : usersList) {
+            if(userDariList.getEmail().equals(email)) {
+                adaEmailSama = true;
+                break;
+            } else {
+                adaEmailSama = false;
+            }
+        }
+
+        if(adaEmailSama == false) {
+            userService.addUser(user);
+            model.addAttribute("user", user);
+            return "redirect:/";
+        } else {
+            model.addAttribute("message", "Sudah ada email");
+            return "error-submit-user";
+        }
+
+
     }
 
     @GetMapping(value = "/delete/{username}")

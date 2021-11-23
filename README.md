@@ -4,6 +4,44 @@
 
 * **Ahmad Imam Fauzan** - *1906353542* - *APAP-C*
 
+## Tutorial 6
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
+   - Otentikasi digunakan untuk memeriksa apakah username dan password dari akun pengguna ada di sistem. Sementara itu, otorisasi digunakan untuk memeriksa hak akses atau izin pengguna yang sudah diotentikasikan untuk mengakses bagian spesifik sistem.
+   - Implementasi otentikasi pada class WebSecurityConfig: 
+   ```
+   @Autowired
+     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+     auth.userDetailsService(userDetailsService).passwordEncoder(encoder());
+     }
+   ```
+   - Implementasi otorisasi pada class WebSecurityConfig:
+   ```
+   antMatchers("/css/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/user/viewall").hasAnyAuthority("ADMIN")
+                .antMatchers("/user/add").hasAnyAuthority("ADMIN")
+                .antMatchers("/penjaga/add/{noBioskop}").hasAnyAuthority("MANAGER")
+                .antMatchers("/penjaga/update/{noPenjaga}").hasAnyAuthority("MANAGER")
+                .antMatchers("/penjaga/delete").hasAnyAuthority("MANAGER")
+                
+   ```
+   
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerja dan tujuannya.
+   - BCryptPasswordEncoder merupakan sebuah fungsi hashing yang digunakan untuk pengenkripsian password sehingga password tidak diketahui walaupun dapat dilihat di database.
+   - BcryptPasswordEncoder mengenkripsi String raw password menjadi sebuah String yang diacak agar tidak mudah diketahui.
+   
+3. Apakah penyimpanan password sebaiknya menggunakan encryption atau hashing? Mengapa demikian?
+   - Informasi yang disimpan hashing secara general kecil dari sisi memori dan merupakan memori fixed length, sedangkan encryption menyimpan informasi yang bukan merupakan fixed length sehingga informasi tersebut bertumbuh seiring bertambahnya informasi password yang digunakan.
+   - Untuk tingkat keamanan, hashing lebih aman dibandingkan encryption 
+
+4. Jelaskan secara singkat apa itu UUID beserta penggunaannya!
+   - Universally Unique Identifier (UUID) digunakan untuk mengidentifikasi secara unik beberapa objek atau entitas di internet. Bergantung pada mekanisme spesifik yang digunakan, UUID dijamin berbeda atau paling tidak sangat mungkin berbeda dari UUID lain yang ada. UUID digunakan untuk meningkatkan keamanan data pengguna dikarenakan id pengguna akan di-generate secara unik dengan hashing sebanyak 32 karakter secara acak sehingga id pengguna aman dan tidak mudah untuk diretas.
+
+5. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut?
+   - UserDetailsService adalah antarmuka inti dalam kerangka kerja Spring Security, yang digunakan untuk mengambil informasi otentikasi dan otorisasi pengguna. Ini memiliki metode baca-saja tunggal bernama loadUserByUsername() yang mencari pengguna berdasarkan nama pengguna.
+
+---
+
 ## Tutorial 5
 1. Apa itu Postman? Apa kegunaannya?
    - Postman merupakan sebuah plugin atau aplikasi untuk browser sebagai REST Client. Aplikasi ini berguna untuk melakukan uji coba REST API yang telah dibuat.

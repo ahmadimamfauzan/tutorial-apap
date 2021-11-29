@@ -4,6 +4,22 @@
 
 * **Ahmad Imam Fauzan** - *1906353542* - *APAP-C*
 
+## Tutorial 7
+1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
+    - Jawaban dapat dilihat di https://ristek.link/Tutorial-7-APAP-Jawaban-Nomor-1-1906353542
+2. Menurut pemahaman kamu selama pengerjaan tutorial ini, apa perbedaan antara state dan props?
+    - State adalah data private sebuah component. Data ini hanya tersedia untuk component tersebut dan tidak bisa di akses dari component lain. Component dapat merubah statenya sendiri.
+    - Prop singkatan dari Property. Mirip seperti atrribute pada tag HTML. Dalam pembuatannya, jika dalam functional component maka prop ini adalah parameternya.
+3. Menurut kamu, apakah sebaiknya kita menggunakan component (e.g. List, Item) dalam React? sebutkan alasannya.
+    - Sebaiknya kita menggunakan component dalam React karena sifatnya yang reusable sesuai dengan kebutuhan kita. Contoh pada tutorial kali ini dimana ada component List dan Item yang bisa dipanggil ulang untuk menampilkan seluruh produk katalog yang ada di file json sekaligus menampilkan seluruh produk yang masuk ke keranjang. Kode ini bisa kita panggil berkali-kali sesuai denga kebutuhan kita.
+4. Apa perbedaan class component dan functional component?
+    - Class component memiliki state, sedangkan function based component tidak memiliki state (hanya menerima props). Secara sederhana, ketika kita membutuhkan state sudah hampir pasti akan membutuhkan class based component.
+5. Dalam react, apakah perbedaan component dan element?
+    - Komponen pada React secara konsep sama seperti function pada JavaScript, perbedaannya adalah jika function menerima sebarang input yang disebut parameter atau argumen dan me-return sebuah nilai, komponen menerima input yang disebut props dan me-return React Element yang menggambarkan apa yang akan ditampilkan di layar. Komponen memungkinkan kita untuk membuat UI yang independent, isolated, dan reusable sehingga mengurangi repetisi kode.
+    - Elemen adalah blok bangunan terkecil di React, yang menggambarkan apa yang akan dilihat oleh user di layar mereka. Secara sederhana, elemen dapat didefinisikan sebagai representasi virtual dari DOM.
+
+---
+
 ## Tutorial 6
 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode yang telah anda buat) konsep tersebut diimplementasi?
    - Otentikasi digunakan untuk memeriksa apakah username dan password dari akun pengguna ada di sistem. Sementara itu, otorisasi digunakan untuk memeriksa hak akses atau izin pengguna yang sudah diotentikasikan untuk mengakses bagian spesifik sistem.

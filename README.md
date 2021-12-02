@@ -4,6 +4,83 @@
 
 * **Ahmad Imam Fauzan** - *1906353542* - *APAP-C*
 
+## Tutorial 8
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan mengapa kalian
+melakukan langkah - langkah tersebut?
+    - Setelah line coding di bawah ini
+    ```
+    await APIConfig.put(`item/${this.state.id}`, data)
+    ``` 
+    - akan di-setState kembali id, title, price, description, category, quantity menjadi data semula.
+    ```
+    async handleSubmitEditItem(event) {
+        event.preventDefault();
+        try {
+            const data = {
+                title: this.state.title,
+                price: this.state.price,
+                description: this.state.description,
+                category: this.state.category,
+                quantity: this.state.quantity
+            };
+            await APIConfig.put(`/item/${this.state.id}`, data);
+            this.setState({
+                id: "",
+                title: "",
+                price: 0,
+                description: "",
+                category: "",
+                quantity: 0
+            })
+            this.loadData();
+        } catch (error) {
+            alert("Oops terjadi masalah pada server");
+            console.log(error);
+        }
+        this.handleCancel(event);
+    }
+    ```
+2. Jelaskan fungsi dari async dan await!
+    - Async/await adalah fitur yang hadir sejak ES2017. Fitur ini mempermudah kita dalam menangani proses asynchronous. Ada 2 kata kunci disini yaitu async dan await, mari kita lihat contohnya :
+    ```
+    function doAsync() {
+        return new Promise( function (resolve, reject) {
+        var check = true
+            if (check){
+                resolve("berhasil")
+            } else{
+                reject("gagal")
+            }
+        })
+    }
+    ```
+    - maka cara menggunakan nya pada async/await adalah seperti ini:
+    ```
+    async function hello() {
+        var result = await doAsync()
+        console.log(result)
+    }
+
+    hello()
+    ```
+    - Keterangan :
+        - async → mengubah function menjadi asynchronous
+        - await → menunda eksekusi hingga proses asynchronous selesai, dari kode di atas berarti console.log(result) tidak akan di eksekusi sebelum proses doAsync( ) selesai . await juga bisa digunakan berkali-kali di dalam function
+3. Masukkan jawaban dari Screenshot yang diperintahkan di halaman 9 pada Component Lifecycle
+pada pertanyaan ini.
+    - Jawaban dapat dilihat di https://ristek.link/Tutorial-8-APAP-Jawaban-Nomor-3-1906353542
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate,
+componentDidUpdate, componentWillReceiveProps, componentWillUnmount.
+Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja
+yang biasanya menggunakan lifecycle method tersebut”.
+    - componentDidMount, fungsi dipanggil ketika komponen-komponen telah selesai dibuat, case yang sering digunakan adalah ketika ingin tahu suatu komponen telah selesai dibuat. 
+    - shouldComponentUpdate, fungsi yang dipanggil ketika adanya perubahan dari property atau state dari komponen, case yang sering digunakan adalah ketika ingin mengetahui perubahan props/state dari komponen terkait.
+    - componentDidUpdate, fungsi yang dipanggil ketika sebelum atatu sesudah komponen di render kembali, case yang biasa menggunakannya adalah ketika ada pekerjaan manual dari luar react yang mengupdate si component.
+    - componentWillReceiveProps, fungsi dipanggil ketika dipanggil sebelum komponen menerima props yang nilainya telah berubah, case yang biasa menggunakannya adalah ketika mengubah si component.
+    - componentWillUnmount, fungsi dipanggil ketika ingin menghancurkan/menghapus/menyingkirkan komponen, case yang biasa menggunakannya adalah ketika ingin unsubscribe.
+
+---
+
 ## Tutorial 7
 1. Jelaskan apa yang Anda lakukan di latihan dalam satu paragraf per-soal. Berikan screenshot sebagai ilustrasi dari apa yang Anda jelaskan.
     - Jawaban dapat dilihat di https://ristek.link/Tutorial-7-APAP-Jawaban-Nomor-1-1906353542
